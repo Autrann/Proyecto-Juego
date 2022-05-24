@@ -5,22 +5,23 @@ public class ProyectileY extends Projectiles
     private int speed = -10;
     private int speedY = -5;
     private boolean RigthLeft =true;
-    private int deletePro;
-    private int timeDeletePro;
+    private int deleteProyectile;
+    private int timeDeleteProyectile;
     boolean touchingAct = false;
     
-    public ProyectileY(boolean AstronautSeeing){
+    public ProyectileY(boolean AstronautSeeing)
+    {
         getImage().scale(20,20);
-        RigthLeft = AstSeeing;
-        deletePro = 30;
+        RigthLeft = AstronautSeeing;
+        deleteProyectile = 30;
     }
     
     public void act() 
     {
-        timeDeletePro++;
+        timeDeleteProyectile++;
         moveProyectile(RigthLeft);
         checkForCollisions();
-        removePro();
+        removeProyectile();
     }
     
     public void moveProyectile(boolean isSeeing)
@@ -31,15 +32,16 @@ public class ProyectileY extends Projectiles
             setLocation(getX() - speed, getY()+ speedY);
     }
     
-    private void removePro()
+    private void removeProyectile()
     {
-        if (timeDeletePro >= deletePro)
+        if (timeDeleteProyectile >= deleteProyectile)
         {
             getWorld().removeObject(this);
         }
     }
     
-    public void checkForCollisions() {
+    public void checkForCollisions() 
+    {
        Actor cikar = getOneIntersectingObject(Cikar.class);
        Actor chitauri = getOneIntersectingObject(Chitauri.class);
        if( cikar != null || chitauri != null ) 
@@ -82,9 +84,10 @@ public class ProyectileY extends Projectiles
                getWorld().removeObject(this);
            }
            //mundo.vidas.decrementar(); 
-       }else{
+       }else
+       {
            touchingAct = false;
-        }
+       }
        }
 }
 

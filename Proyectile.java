@@ -4,23 +4,23 @@ public class Proyectile extends Projectiles
 {
     private int speed = -10;
     private boolean RigthLeft = true;
-    private int deletePro;
-    private int timeDeletePro;
+    private int deleteProyectil;
+    private int timeDeleteProyectil;
     boolean touchingAct = false;
     
     public Proyectile(boolean AstronautSeeing)
     {
         getImage().scale(20,20);
         RigthLeft = AstronautSeeing;
-        deletePro = 30;
+        deleteProyectil = 30;
     }
     
     public void act() 
     {
-        timeDeletePro++;
+        timeDeleteProyectil ++;
         moveProyectile(RigthLeft);
         checkForCollisions();
-        removePro();
+        removeProyectil();
     }
     
     public void moveProyectile(boolean isSeeing)
