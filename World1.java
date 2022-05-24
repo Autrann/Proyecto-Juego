@@ -37,16 +37,9 @@ public class World1 extends Scrolling
         // en la siguiente declaración, el actor se coloca en el centro de la ventana
         if(act == 2 || act == 4)
         {
-          addMainActor(new Cikar(), 250, 300, 200,400); // los parametros son para que el actor se coloque en el lugar correcto
+          addMainActor(new Baker(), 250, 300, 200,400); // los parametros son para que el actor se coloque en el lugar correcto
           // y con esta linea para moverlo al lado izquierdo
           mainActor.setLocation(100, 250);
-          addObject(new Goal(act), 3950, 285);
-        }
-        else
-        {
-          addMainActor(new Chitauri(), 250, 300, 200,400); // los parametros son para que el actor se coloque en el lugar correcto
-          // y con esta linea para moverlo al lado izquierdo
-          mainActor.setLocation(100, 290);
           addObject(new Goal(act), 3950, 285);
         }
             

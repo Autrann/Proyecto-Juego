@@ -40,13 +40,9 @@ public class World2 extends Scrolling
         
     public void buildWorld(int act){
          if(act==2 || act==4){
-          addMainActor(new Cikar(), 250, 300, 200,400); // los parametros son para que el actor se coloque en el lugar correcto
+          addMainActor(new Baker(), 250, 300, 200,400); // los parametros son para que el actor se coloque en el lugar correcto
           // y con esta linea para moverlo al lado izquierdo
           mainActor.setLocation(100, 250);
-        }else{
-          addMainActor(new Chitauri(), 250, 300, 200,400); // los parametros son para que el actor se coloque en el lugar correcto
-          // y con esta linea para moverlo al lado izquierdo
-          mainActor.setLocation(100, 290);
         }
             
         //aqui se agregan los objetos al mundo, (actor/objeto, x,y)

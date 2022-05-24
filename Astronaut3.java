@@ -1,19 +1,59 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class Astronaut3 here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Astronaut3 extends Enemys
 {
-    /**
-     * Act - do whatever the Astronaut3 wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act()
+    private int speed ;
+    private int timer;
+    public boolean isSeeing = true;
+    private int scrolled;
+    private int seeing;
+    private GreenfootImage imageLeft;
+    private GreenfootImage imageRight;
+    GreenfootSound shot = new GreenfootSound("pistol.wav");
+    
+    public Astronaut3()
     {
-        // Add your action code here.
+        timer = 0;
+        speed = -1;
+        imageL = new GreenfootImage("soldierShotgun.png");
+        imageR = new GreenfootImage("soldierShotgunD.png");
+        setImage(imageL);
     }
+    
+    public void act() 
+    {
+        moveAround();
+        fireProyectile();
+    }
+    
+    public void moveAround(){
+        if ( ! getWorld().getObjects(Baker.class).isEmpty() )
+        {
+            Baker act = (Cikar) getWorld().getObjects(Baker.class).get(0);
+            if (act.getXCoord() > getX())
+            {
+                isSeeing = false;
+                setImage(imageRight);
+            }
+            if (act.getXCoord() < getX())
+            {
+                isSeeing = true;
+                setImage(imageLeft);
+            }
+        }
+    }
+    
+    public void fireProyectile(){
+        timer++;
+        scrolled = ((Scrolling)getWorld()).getUnivX(getX());
+        if(timer > 110)
+        {
+            ((Scrolling)getWorld()).addObject(new Proyectile(isSeeing), scrolled, getY(), true);
+            ((Scrolling)getWorld()).addObject(new ProyectileY(isSeeing), scrolled, getY(), true);
+            ((Scrolling)getWorld()).addObject(new ProyectileX(isSeeing), scrolled, getY(), true);
+            timer = 0;
+        }
+    }
+
 }
+

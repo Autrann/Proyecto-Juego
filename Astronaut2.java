@@ -41,7 +41,7 @@ public class Astronaut2 extends Enemys
     public void fireProyectile()
     {
         timer++;
-        scrolled = ((Scrolling)getWorld()).getUniversalX(getX());
+        scrolled = ((Scrolling)getWorld()).getUnivX(getX());
         if(timer == 50)
         {
           ((Scrolling)getWorld()).addObject(new Proyectile(isSeeing), scrolled, getY(), true);    

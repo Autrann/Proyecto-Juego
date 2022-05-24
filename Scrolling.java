@@ -232,7 +232,7 @@ public class Scrolling extends World{
     /**
      *  Determina hasta dónde se ha movido el actor principal en general
      */
-    public int getUniversalX(int worldX)
+    public int getUnivX(int worldX)
     {
         return worldX + scrolledX;
     }

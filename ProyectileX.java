@@ -41,10 +41,12 @@ public class ProyectileX extends Projectiles
     }
     
     public void checkForCollisions() {
-       Actor cikar = getOneIntersectingObject(Cikar.class);
-       Actor chitauri = getOneIntersectingObject(Chitauri.class);
-       if( cikar != null || chitauri != null ) {
-           if(getWorld() instanceof World1){
+       Actor baker = getOneIntersectingObject(Baker.class);
+       
+       if( baker != null)
+       {
+           if(getWorld() instanceof World1)
+           {
               World1 mundo = (World1)getWorld();
               HealthBar Health = mundo.getHealthBar();
               if(touchingAct==false){
@@ -80,8 +82,8 @@ public class ProyectileX extends Projectiles
                }
                getWorld().removeObject(this);
            }
-           //mundo.vidas.decrementar(); 
-       }else{
+       }else
+       {
            touchingAct = false;
        }
        }

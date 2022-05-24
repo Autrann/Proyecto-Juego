@@ -40,9 +40,9 @@ public class ProyectileY extends Projectiles
     }
     
     public void checkForCollisions() {
-       Actor cikar = getOneIntersectingObject(Cikar.class);
-       Actor chitauri = getOneIntersectingObject(Chitauri.class);
-       if( cikar != null || chitauri != null ) 
+       Actor baker = getOneIntersectingObject(Baker.class);
+       
+       if( baker != null ) 
        {
            if(getWorld() instanceof World1)
            {
@@ -81,8 +81,8 @@ public class ProyectileY extends Projectiles
                }
                getWorld().removeObject(this);
            }
-           //mundo.vidas.decrementar(); 
-       }else{
+       }else
+       {
            touchingAct = false;
         }
        }
