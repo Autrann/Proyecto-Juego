@@ -25,10 +25,9 @@ public class Goal extends struct
     
     public void checkForCollisions() 
     {       
-       Actor cikar = getOneIntersectingObject(Cikar.class);
-       Actor chitauri = getOneIntersectingObject(Chitauri.class);
-       
-       if( cikar != null || chitauri != null) 
+       Actor baker = getOneIntersectingObject(Baker.class);   
+
+       if( baker != null) 
        {
            World1 world1 = new World1(flag1);
            world1.music.stop();

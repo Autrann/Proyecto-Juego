@@ -41,9 +41,10 @@ public class ProyectileX extends Projectiles
     }
     
     public void checkForCollisions() {
-       Actor cikar = getOneIntersectingObject(Cikar.class);
-       Actor chitauri = getOneIntersectingObject(Chitauri.class);
-       if( cikar != null || chitauri != null ) {
+       Actor baker = getOneIntersectingObject(Baker.class);
+       
+       if( baker != null) 
+       {
            if(getWorld() instanceof World1){
               World1 mundo = (World1)getWorld();
               HealthBar Health = mundo.getHealthBar();
