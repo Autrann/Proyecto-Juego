@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class World2 here.
  * 
- * @author (your name) 
+ * @author (Alfredo) 
  * @version (a version number or a date)
  */
 public class World2 extends Scrolling
