@@ -1,21 +1,26 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
-/**
- * Write a description of class GameOver here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class GameOver extends World
 {
+    private int enterDelayCount;
+    GreenfootSound lost = new GreenfootSound("Lost.wav");
+    GreenfootSound clicked = new GreenfootSound("Clicked.wav");
+    Scrolling mainHp;
 
-    /**
-     * Constructor for objects of class GameOver.
-     * 
-     */
     public GameOver()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
+        lost.play();
+    }
+
+    public void act()
+    {      
+        mainHp.HP = 10;
+        enterDelayCount ++;
+        if (Greenfoot.isKeyDown("enter") && enterDelayCount > 15)
+        {
+            clicked.play();
+            Greenfoot.setWorld(new IntroPortada());
+        }
     }
 }

@@ -2,6 +2,12 @@
 comment0.target=World1
 comment1.params=act
 comment1.target=World1(int)
-comment2.params=act
-comment2.target=void\ buildWorld(int)
-numComments=3
+comment2.params=
+comment2.target=void\ addHudScore()
+comment3.params=act
+comment3.target=void\ buildWorld(int)
+comment4.params=
+comment4.target=HealthBar\ getHealthBar()
+comment5.params=
+comment5.target=RadBar\ getRadBar()
+numComments=6

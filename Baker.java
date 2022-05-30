@@ -1,6 +1,6 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
-public class Baker extends Actor
+public class Baker extends Personajes
 {
     private final int Gravity = 1;
     private int velocity;
@@ -9,29 +9,45 @@ public class Baker extends Actor
     private boolean isFacingRight = true;
     private boolean isFacingLeft = false;
     private boolean isJumping = false;
+    public GreenfootSound stomp = new GreenfootSound("stomp.wav");
     public int timer = 0;
     
     public Baker(){
         velocity = 2;
     }
-    
-    public void addedToWorld(World w){  
+    public void addedToWorld(World w){    
         positionX = getX();
         positionY = getY();
-    } 
-    
-    public void act()
+    }  
+
+    public void act() 
     {
-        if(Greenfoot.isKeyDown("space")) jump();
+        fall();
+        if(Greenfoot.isKeyDown("space") && isOnSolidGround()) jump();
         runTimer();
         move();
-
+        deleteEnemy();
+    }
+   
+    
+    public void fall(){
+        setLocation(getX(), getY() + velocity);
+        
+        if(isOnSolidGround()) velocity = 0;
+        else velocity += Gravity;
+    }
+    
+    public void jump(){
+        isJumping = true;
+        velocity = -15;
+        if(isFacingRight)setImage("JumpingR.png");
+        if(isFacingLeft)setImage("JumpingL.png");
     }
     
     public void runTimer()
     {
         timer++;
-        if(timer == 20)
+        if(timer == 30)
             timer = 0;
     }
     
@@ -51,30 +67,6 @@ public class Baker extends Actor
          }        
         
         setLocation(x,y);
-    }
-    
-    public void jump(){
-        isJumping = true;
-        velocity = -15;
-        if(isFacingRight)setImage("JumpingR.png");
-        if(isFacingLeft)setImage("JumpingL.png");
-    }
-    
-    public void fall(){
-        setLocation(getX(), getY() + velocity);
-        
-        if(isOnSolidGround()) velocity = 0;
-        else velocity += Gravity;
-    }
-    
-    public boolean isOnSolidGround(){
-        boolean isOnGround = false;
-        
-        if(getY() > getWorld().getHeight() - 130) {
-            isOnGround = true;
-            isJumping = false;
-        }
-        return isOnGround;
     }
     
     private void animate()
@@ -97,6 +89,44 @@ public class Baker extends Actor
                         setImage("FacingL2.png");
                 }
             }
+        }
+    }
+    
+    public boolean isOnSolidGround(){
+        boolean isOnGround = false;
+        
+        if(getY() > getWorld().getHeight() - 130) {
+            isOnGround = true;
+            isJumping = false;
+        }
+        if(getOneObjectAtOffset(0, getImage().getHeight()/2 - 2, Platform.class) != null || getOneObjectAtOffset(0, getImage().getHeight()/2 - 2, Column.class) != null){
+            isOnGround = true;
+            isJumping = false;
+        }
+        return isOnGround;
+    }
+    
+    public void deleteEnemy(){
+        Actor Astronaut = getOneObjectAtOffset (0, getImage().getHeight()/2, Astronaut.class);
+        Actor Astronaut2 = getOneObjectAtOffset (0, getImage().getHeight()/2, Astronaut2.class);
+        Actor Astronaut3 = getOneObjectAtOffset (0, getImage().getHeight()/2, Astronaut3.class);
+        if(Astronaut != null)
+        {
+            velocity = -10;
+            stomp.play();
+            getWorld().removeObject(Astronaut);
+        }
+        if(Astronaut2 != null)
+        {
+            velocity = -10;
+            stomp.play();
+            getWorld().removeObject(Astronaut2);
+        }
+        if(Astronaut3 != null)
+        {
+            velocity = -10;
+            stomp.play();
+            getWorld().removeObject(Astronaut3);
         }
     }
     
