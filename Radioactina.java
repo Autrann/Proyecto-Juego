@@ -38,7 +38,7 @@ public class Radioactina extends items
        if(baker != null)
        {
             Baker.score++;
-            getWorld().showText("Score = " + Baker.score, 100, 100);
+            getWorld().showText("Score = " + Baker.score, 290, 19);
             
                if(getWorld() instanceof World1)
                {
