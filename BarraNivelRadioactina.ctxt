@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=BarraNivelRadioactina
+comment1.params=
+comment1.target=BarraNivelRadioactina()
+comment2.params=width\ height
+comment2.target=BarraNivelRadioactina(int,\ int)
+comment3.params=
+comment3.target=void\ act()
+comment4.params=
+comment4.target=void\ checkRadioactinaUp()
+numComments=5
